@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Header = () => {
+const Header = ({ getSearchValue }) => {
+  const [value, setValue] = useState("");
+  getSearchValue(value);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -35,8 +37,10 @@ const Header = () => {
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Search Meal"
               aria-label="Search"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
             />
             <button className="btn btn-outline-success" type="submit">
               Search

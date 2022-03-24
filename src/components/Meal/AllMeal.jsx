@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MealCart from "../Cart/MealCart";
 import Meal from "./Meal";
 
-const AllMeal = () => {
+const AllMeal = ({ searchValue }) => {
   const [meals, setMeals] = useState([]);
   const [cartMeals, setCartMeals] = useState([]);
   const cartMeal = (meal) => {
@@ -19,6 +19,15 @@ const AllMeal = () => {
       .then((res) => res.json())
       .then((data) => setMeals(data.meals));
   }, []);
+  useEffect(() => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.meals.length > 0) {
+          setMeals(data.meals);
+        }
+      });
+  }, [searchValue]);
   return (
     <div className="container">
       <div className="row">
