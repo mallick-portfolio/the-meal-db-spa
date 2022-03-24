@@ -6,10 +6,13 @@ const CartItem = ({ meal }) => {
     <div className="cartMeal">
       <img src={strMealThumb} alt="" />
       <div>
-        <h6>Meal Name</h6>
+        <span className="cartCommon">Meal Name</span>
         <p>{strMeal}</p>
       </div>
-      <p>{strCategory}</p>
+      <div>
+        <span className="cartCommon">Category</span>
+        <p>{strCategory}</p>
+      </div>
     </div>
   );
 };

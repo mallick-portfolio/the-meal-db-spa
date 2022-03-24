@@ -22,14 +22,14 @@ const AllMeal = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-9  my-3">
+        <div className="col-lg-8  my-3">
           <div className="row row-cols-1 row-cols-md-3 g-4">
             {meals.map((meal) => (
               <Meal key={meal.idMeal} meal={meal} cartMeal={cartMeal} />
             ))}
           </div>
         </div>
-        <div className="col-lg-3">
+        <div className="col-lg-4">
           <MealCart cartMeals={cartMeals} />
         </div>
       </div>

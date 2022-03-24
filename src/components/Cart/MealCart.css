@@ -1,5 +1,6 @@
 .mealCart {
   background-color: #ff9900;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: auto;
   padding: 20px 15px;
 }

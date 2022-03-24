@@ -3,7 +3,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 3px 4px 20px gray;
+  border-radius: 10px;
+  padding: 5px;
 }
 .cartMeal img {
   width: 50px;
+  border-radius: 50%;
+}
+.cartCommon {
+  font-size: 12px;
+  color: #fff;
 }
