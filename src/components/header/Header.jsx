@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = ({ getSearchValue }) => {
   const [value, setValue] = useState("");
@@ -6,9 +7,9 @@ const Header = ({ getSearchValue }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to={"/"}>
           Meal
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

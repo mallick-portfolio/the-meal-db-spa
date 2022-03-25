@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header/Header'
 import AllMeal from './components/Meal/AllMeal'
 
@@ -10,7 +11,9 @@ const App = () => {
   return (
     <div>
       <Header getSearchValue={getSearchValue} />
-      <AllMeal searchValue={searchValue} />
+      <Routes>
+        <Route path='/' element={<AllMeal searchValue={searchValue} />} />
+      </Routes>
     </div>
   )
 }

@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import {
+  addToLocalStorate,
+  getLocalStorage,
+} from "../../utilities/localstorage";
 import MealCart from "../Cart/MealCart";
 import Meal from "./Meal";
 
@@ -6,6 +10,8 @@ const AllMeal = ({ searchValue }) => {
   const [meals, setMeals] = useState([]);
   const [cartMeals, setCartMeals] = useState([]);
   const cartMeal = (meal) => {
+    // addToLocalStorate(meal.idMeal);
+    addToLocalStorate(meal.idMeal);
     const checkMeal = cartMeals.find((m) => m.idMeal === meal.idMeal);
     if (checkMeal !== undefined) {
       alert("your selected item is already exists");
@@ -19,6 +25,7 @@ const AllMeal = ({ searchValue }) => {
       .then((res) => res.json())
       .then((data) => setMeals(data.meals));
   }, []);
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`)
       .then((res) => res.json())
@@ -28,6 +35,22 @@ const AllMeal = ({ searchValue }) => {
         }
       });
   }, [searchValue]);
+
+  useEffect(() => {
+    const storageMeals = getLocalStorage();
+    if (!storageMeals) {
+      return;
+    }
+    const storageCartMeals = [];
+    for (const meal of storageMeals) {
+      const findMeals = meals.find((m) => m.idMeal === meal);
+      if (findMeals) {
+        storageCartMeals.push(findMeals);
+      }
+    }
+    setCartMeals(storageCartMeals);
+  }, [meals]);
+
   return (
     <div className="container">
       <div className="row">
