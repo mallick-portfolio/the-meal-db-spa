@@ -1,7 +1,8 @@
 import React from "react";
 import "./CartItem.css";
-const CartItem = ({ meal }) => {
-  const { strMealThumb, strMeal, strCategory } = meal;
+
+const CartItem = ({ meal, deleteCartId }) => {
+  const { strMealThumb, strMeal, strCategory, idMeal } = meal;
   return (
     <div className="cartMeal">
       <img src={strMealThumb} alt="" />
@@ -13,6 +14,9 @@ const CartItem = ({ meal }) => {
         <span className="cartCommon">Category</span>
         <p>{strCategory}</p>
       </div>
+      <button className="btn btn-primary" onClick={() => deleteCartId(idMeal)}>
+        Delete
+      </button>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import Meal from "./Meal";
 const AllMeal = ({ searchValue }) => {
   const [meals, setMeals] = useState([]);
   const [cartMeals, setCartMeals] = useState([]);
+  const [mealId, setMealId] = useState("");
   const cartMeal = (meal) => {
     // addToLocalStorate(meal.idMeal);
     addToLocalStorate(meal.idMeal);
@@ -51,6 +52,22 @@ const AllMeal = ({ searchValue }) => {
     setCartMeals(storageCartMeals);
   }, [meals]);
 
+  // delete item from localstorate
+  const deleteCartId = (id) => {
+    setMealId(id);
+  };
+
+  useEffect(() => {
+    const remainingMeals = cartMeals.filter((meal) => meal.idMeal !== mealId);
+    const storageMeals = getLocalStorage();
+    if (!storageMeals) {
+      return;
+    }
+    const remainStorage = storageMeals.filter((id) => id !== mealId);
+    localStorage.setItem("meals", JSON.stringify(remainStorage));
+    setCartMeals(remainingMeals);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mealId]);
   return (
     <div className="container">
       <div className="row">
@@ -62,7 +79,7 @@ const AllMeal = ({ searchValue }) => {
           </div>
         </div>
         <div className="col-lg-4">
-          <MealCart cartMeals={cartMeals} />
+          <MealCart deleteCartId={deleteCartId} cartMeals={cartMeals} />
         </div>
       </div>
     </div>

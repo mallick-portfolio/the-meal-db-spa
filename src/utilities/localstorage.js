@@ -17,4 +17,6 @@ const addToLocalStorate = (id) => {
   localStorage.setItem('meals', JSON.stringify(data))
 }
 
-export { addToLocalStorate, getLocalStorage }
+
+
+export { addToLocalStorate, getLocalStorage, }
