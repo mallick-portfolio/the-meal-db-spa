@@ -4,3 +4,8 @@
   max-height: auto;
   padding: 20px 15px;
 }
+.meals {
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

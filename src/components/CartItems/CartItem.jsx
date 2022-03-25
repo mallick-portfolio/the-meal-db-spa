@@ -14,7 +14,7 @@ const CartItem = ({ meal, deleteCartId }) => {
         <span className="cartCommon">Category</span>
         <p>{strCategory}</p>
       </div>
-      <button className="btn btn-primary" onClick={() => deleteCartId(idMeal)}>
+      <button className="btn btn-danger btn-sm" onClick={() => deleteCartId(idMeal)}>
         Delete
       </button>
     </div>
